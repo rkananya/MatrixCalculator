@@ -72,7 +72,7 @@ To compile and run the **Java** program:
 2. Navigate to the directory containing the source file (`MatrixCalculator.java`).
 3. Compile the program:
    ```bash
-   javac MatrixCalculator.java
+   javac MatrixCalculatorApp.java
    ```
 4. Run the program:
    ```bash

@@ -252,25 +252,40 @@ void multiply(int a[][10],int b[][10],int r1,int c2,int r)
           }printf("\n");
        }
  }
- //(x-X)
- void deviation(int a[],int d[],int n)
- {
-     int i,sum,mean;
-     for(i=0;i<n;i++)
-        sum+=a[i];
-    mean=sum/n;
-    for(i=0;i<n;i++)
-        d[i]=a[i]-mean;
- }
- int var(int x[],int n)
- {
-    int sum=0,dx[100],v;
-    deviation(a,dx,n);
-    for(int i=0;i<n;i++)
-        sum=sum+(pow(dx[i],2));
-    v=sum/n-1;
-    return v;
- }
+ void deviation(int a[], int d[], int n) {
+    int i, sum = 0;
+    float mean;
+    
+    // Calculate the mean
+    for (i = 0; i < n; i++) {
+        sum += a[i];
+    }
+    mean = (float)sum / n;  // Use float for better precision
+    
+    // Calculate deviation from the mean
+    for (i = 0; i < n; i++) {
+        d[i] = a[i] - mean;
+    }
+}
+
+// Function to calculate variance
+float var(int x[], int n) {
+    int sum = 0, i;
+    float variance;
+    int dx[100];
+    
+    // Calculate the deviation
+    deviation(x, dx, n);
+    
+    // Sum the squared deviations
+    for (i = 0; i < n; i++) {
+        sum += dx[i] * dx[i];  // Avoid using pow() for integer arithmetic
+    }
+    
+    // Calculate variance
+    variance = (float)sum / (n - 1);  // Use float to handle decimal results
+    return variance;
+}
  int main()
  {
      int a[10][10],b[10][10],r1,c1,r2,c2,ch,s,d,n;
